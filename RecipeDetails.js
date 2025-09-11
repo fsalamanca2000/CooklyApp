@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, ActivityIndicator, StyleSheet, Touchable
 import { Ionicons } from "@expo/vector-icons";
 
 export default function RecipeDetails({ route, favorites, toggleFavorite }) {
-  const { recipeId } = route.params; // sigue recibiendo id por params
+  const { recipeId } = route.params;
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
 

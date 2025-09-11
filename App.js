@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  TextInput,
-  SafeAreaView,
-} from "react-native";
+import {View,Text,FlatList,Image,TouchableOpacity,StyleSheet,TextInput,SafeAreaView,} from "react-native";
 import axios from "axios";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -26,12 +17,10 @@ export default function App() {
   const [favorites, setFavorites] = useState([]);
   const [recipes, setRecipes] = useState([]);
 
-  // toggleFavorite ahora trabaja con el objeto receta
   const toggleFavorite = (recipe) => {
     setFavorites((prev) => {
       const exists = prev.some((r) => r.idMeal === recipe.idMeal);
       if (exists) return prev.filter((r) => r.idMeal !== recipe.idMeal);
-      // añadimos al inicio para que se vea primero en Favoritos
       return [recipe, ...prev];
     });
   };
@@ -110,7 +99,7 @@ function HomeScreen({ navigation, favorites, recipes, setRecipes, toggleFavorite
       .catch((err) => console.log(err));
   }, []);
 
-  // recetas base (usa setRecipes que viene de App)
+  // recetas base
   useEffect(() => {
     axios
       .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Chicken")
@@ -138,7 +127,7 @@ function HomeScreen({ navigation, favorites, recipes, setRecipes, toggleFavorite
     }
   }, [search]);
 
-  // helper para saber si una receta está en favoritos
+  //Saber si una receta está en favoritos
   const isFav = (id) => favorites.some((f) => f.idMeal === id);
 
   return (
@@ -237,7 +226,6 @@ function HomeStack({ favorites, recipes, setRecipes, toggleFavorite }) {
           />
         )}
       />
-      {/* Pasamos favorites y toggleFavorite como props (no por params) */}
       <Stack.Screen
         name="RecipeDetails"
         children={(props) => <RecipeDetails {...props} favorites={favorites} toggleFavorite={toggleFavorite} />}
@@ -246,7 +234,6 @@ function HomeStack({ favorites, recipes, setRecipes, toggleFavorite }) {
   );
 }
 
-/* ------------------- estilos (no los toqué) ------------------- */
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: "#fff0f5" },
   container: { flex: 1, paddingHorizontal: 10, backgroundColor: "#fff0f5" },

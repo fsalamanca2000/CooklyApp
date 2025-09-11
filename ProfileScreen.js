@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  Image,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import {View,Text,SafeAreaView,StyleSheet,Image,TextInput,TouchableOpacity,Alert,} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function ProfileScreen() {

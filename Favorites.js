@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-} from "react-native";
+import {View,Text,FlatList,TouchableOpacity,Image,StyleSheet,} from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function Favorites({ favorites, toggleFavorite, navigation }) {
